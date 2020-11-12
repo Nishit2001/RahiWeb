@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+{% block body %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg') }}')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Admine Panel</h1>
+              <span class="subheading">manage your posts and all</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <a href="/dashboard"<button class="btn btn-primary">dashboard home</button></a>
+            <hr>
+
+          <h1>Add/Edit Posts</h1>
+         {% if sno != 0 %}
+          <form class="form-validate" name="sentMessage" method="post" id="contactForm"  action="/edit/{{post.number}}" novalidate>
+
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>title</label>
+                <input type="text" class="form-control" placeholder="Title" name="title" id="name" required data-validation-required-message="Please enter your name." value='{{post.title}}'>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>tagline</label>
+                <input type="text" class="form-control" placeholder="Tag line" name="tagline" id="tagline" required data-validation-required-message="Please enter your email address." value="{{post.tag_line}}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>slug</label>
+                <input type="text" class="form-control" placeholder="Slug"name="slug" id="slug" required data-validation-required-message="Please enter your phone number."value="{{post.slug}}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>content</label>
+                <textarea rows="5" class="form-control" placeholder="content"name="content" id="message" required data-validation-required-message="Please enter a message.">{{post.content}}</textarea>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>By</label>
+                <input rows="5" class="form-control" placeholder="written by"name="by" id="by" required data-validation-required-message="Please enter a message."value="{{post.by}}"></input>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>img_file</label>
+                <input rows="5" class="form-control" placeholder="img_file"name="img_file" id="message" required data-validation-required-message="Please enter a message."value="{{post.img_file}}"></input>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <br>
+            <div id="success"></div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+            </div>
+          </form>
+
+           <script type="text/javascript">
+           	 console.log('hii')
+           	 const data = document.querySelector('.form-control')
+             const form = document.querySelector('.form-validate')
+             if(data.value === '{{post.title}}') {
+             		form.action = "/edit/0"
+             	}
+
+           </script>
+          <!-- Pager -->
+          <div class="clearfix">
+            <!--<a class="btn btn-primary float-right" href="#">Older Posts →</a>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
