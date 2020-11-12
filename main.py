@@ -6,7 +6,7 @@ import os
 from datetime import datetime
 import math
 
-local_host = True
+local_host = False
 mailn = 'yashmahajan1142@gmail.com'
 
 app = Flask(__name__)
@@ -23,7 +23,7 @@ mail = Mail(app)
 if local_host==True:
     app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:@localhost/team rahi"
 else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:@localhost/team rahi"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://epiz_27178991:LicYOdXDzI1@sql306.epizy.com/epiz_27178991_epiz_27178991_"
 
 db = SQLAlchemy(app)
 
